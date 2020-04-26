@@ -102,6 +102,7 @@ lower_case_table_names=1
 ```
 如果显示如下信息：
 >ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+
 查看/tmp文件夹下是否存在mysql.sock文件，不存在的话搜索mysql.sock文件位置
 ```
 whereis mysql.sock
