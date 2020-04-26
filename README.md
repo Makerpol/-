@@ -1,1 +1,1 @@
-# - [Linux系统mysql安装](Linux-mysql.md)
+### 1、[Linux系统mysql安装](Linux-mysql.md)
