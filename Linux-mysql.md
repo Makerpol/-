@@ -165,3 +165,26 @@ mysql>flush privileges;
 #4、显示服务列表
 [root@localhost /]# chkconfig --list
 ```
+
+补充：重启数据库，报错
+```
+[root@admired-wall-2 data]# service mysql start
+Starting MySQL. ERROR! The server quit without updating PID file (/usr/local/mysql/data/admired-wall-2.localdomain.pid).
+```
+查看日志
+```
+2020-07-20T01:31:45.826267Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2020-07-20T01:31:45.826366Z 0 [ERROR] InnoDB: mmap(137428992 bytes) failed; errno 12
+2020-07-20T01:31:45.826397Z 0 [ERROR] InnoDB: Cannot allocate memory for the buffer pool
+2020-07-20T01:31:45.826411Z 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+2020-07-20T01:31:45.826424Z 0 [ERROR] Plugin 'InnoDB' init function returned error.
+2020-07-20T01:31:45.826435Z 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+2020-07-20T01:31:45.826445Z 0 [ERROR] Failed to initialize builtin plugins.
+2020-07-20T01:31:45.826452Z 0 [ERROR] Aborting
+```
+内存不足，修改my.cnf文件
+```
+innodb_buffer_pool_size = 8M
+```
+重启mysql，ok！
+
